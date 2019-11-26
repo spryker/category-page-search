@@ -13,6 +13,8 @@ use Propel\Runtime\Map\TableMap;
 use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Search\CategoryNodeDataPageMapBuilder;
 use Spryker\Zed\CategoryPageSearch\Persistence\CategoryPageSearchQueryContainer;
 use Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilder;
+use Spryker\Zed\Search\Business\SearchFacadeInterface;
+use Spryker\Zed\Search\SearchDependencyProvider;
 
 /**
  * Auto-generated group annotations
@@ -26,6 +28,8 @@ use Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilder;
  * @group Listener
  * @group CategoryNodeDataPageMapBuilderTest
  * Add your own group annotations below this line
+ *
+ * @property \SprykerTest\Zed\CategoryPageSearch\CategoryPageSearchCommunicationTester $tester
  */
 class CategoryNodeDataPageMapBuilderTest extends Unit
 {
@@ -41,5 +45,47 @@ class CategoryNodeDataPageMapBuilderTest extends Unit
 
         $this->assertSame(3, count($pageMapTransfer->getFullText()));
         $this->assertSame('Demoshop', $pageMapTransfer->getFullTextBoosted()[0]);
+    }
+
+    /**
+     * @dataProvider canMapRawDataToSearchDataProvider
+     *
+     * @param array $inputData
+     * @param array $expected
+     * @param string $localeName
+     * @param string $mapperName
+     *
+     * @return void
+     */
+    public function testCanTransformPageMapToDocumentByMapperName(array $inputData, array $expected, string $localeName, string $mapperName): void
+    {
+        // Arrange
+        $this->tester->setDependency(SearchDependencyProvider::PLUGIN_SEARCH_PAGE_MAPS, [
+            new CategoryNodeDataPageMapBuilder(),
+        ]);
+        $localeTransfer = new LocaleTransfer();
+        $localeTransfer->setLocaleName($localeName);
+
+        // Act
+        $result = $this->getSearchFacade()->transformPageMapToDocumentByMapperName($inputData, $localeTransfer, $mapperName);
+
+        // Assert
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * @return array
+     */
+    public function canMapRawDataToSearchDataProvider(): array
+    {
+        return require codecept_data_dir('Fixtures/SearchDataMap/transform_page_map_test_data_provider.php');
+    }
+
+    /**
+     * @return \Spryker\Zed\Search\Business\SearchFacadeInterface
+     */
+    protected function getSearchFacade(): SearchFacadeInterface
+    {
+        return $this->tester->getLocator()->search()->facade();
     }
 }
