@@ -45,6 +45,8 @@ class CategoryPageSearchDependencyProvider extends AbstractBundleDependencyProvi
      */
     public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
 
+    public const string PLUGINS_CATEGORY_NODE_PAGE_SEARCH_DATA_EXPANDER = 'PLUGINS_CATEGORY_NODE_PAGE_SEARCH_DATA_EXPANDER';
+
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -71,6 +73,7 @@ class CategoryPageSearchDependencyProvider extends AbstractBundleDependencyProvi
         $container = $this->addStoreFacade($container);
         $container = $this->addCategoryFacade($container);
         $container = $this->addEventBehaviorFacade($container);
+        $container = $this->addCategoryNodePageSearchDataExpanderPlugins($container);
 
         return $container;
     }
@@ -157,5 +160,22 @@ class CategoryPageSearchDependencyProvider extends AbstractBundleDependencyProvi
         });
 
         return $container;
+    }
+
+    protected function addCategoryNodePageSearchDataExpanderPlugins(Container $container): Container
+    {
+        $container->set(static::PLUGINS_CATEGORY_NODE_PAGE_SEARCH_DATA_EXPANDER, function () {
+            return $this->getCategoryNodePageSearchDataExpanderPlugins();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @return array<\Spryker\Zed\CategoryPageSearchExtension\Dependency\Plugin\CategoryNodePageSearchDataExpanderPluginInterface>
+     */
+    protected function getCategoryNodePageSearchDataExpanderPlugins(): array
+    {
+        return [];
     }
 }

@@ -66,7 +66,10 @@ class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
      */
     public function createCategoryNodePageSearchMapper(): CategoryNodePageSearchMapperInterface
     {
-        return new CategoryNodePageSearchMapper($this->createCategoryNodePageSearchDataMapper());
+        return new CategoryNodePageSearchMapper(
+            $this->createCategoryNodePageSearchDataMapper(),
+            $this->getCategoryNodePageSearchDataExpanderPlugins(),
+        );
     }
 
     /**
@@ -197,5 +200,13 @@ class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
     public function createCategoryNodeExtractor(): CategoryNodeExtractorInterface
     {
         return new CategoryNodeExtractor();
+    }
+
+    /**
+     * @return list<\Spryker\Zed\CategoryPageSearchExtension\Dependency\Plugin\CategoryNodePageSearchDataExpanderPluginInterface>
+     */
+    public function getCategoryNodePageSearchDataExpanderPlugins(): array
+    {
+        return $this->getProvidedDependency(CategoryPageSearchDependencyProvider::PLUGINS_CATEGORY_NODE_PAGE_SEARCH_DATA_EXPANDER);
     }
 }

@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Zed\CategoryPageSearch\Communication\Plugin\Event\Listener;
+namespace SprykerTest\Zed\CategoryPageSearch\Communication\Plugin\Search;
 
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\LocaleTransfer;
@@ -28,8 +28,7 @@ use Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilder;
  * @group CategoryPageSearch
  * @group Communication
  * @group Plugin
- * @group Event
- * @group Listener
+ * @group Search
  * @group CategoryNodeDataPageMapBuilderTest
  * Add your own group annotations below this line
  *

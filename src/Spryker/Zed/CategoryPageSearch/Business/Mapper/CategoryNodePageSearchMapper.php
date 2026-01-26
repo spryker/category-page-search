@@ -20,9 +20,12 @@ class CategoryNodePageSearchMapper implements CategoryNodePageSearchMapperInterf
 
     /**
      * @param \Spryker\Zed\CategoryPageSearch\Business\Search\DataMapper\CategoryNodePageSearchDataMapperInterface $categoryNodePageSearchDataMapperInterface
+     * @param array<\Spryker\Zed\CategoryPageSearchExtension\Dependency\Plugin\CategoryNodePageSearchDataExpanderPluginInterface> $categoryNodePageSearchDataExpanderPlugins
      */
-    public function __construct(CategoryNodePageSearchDataMapperInterface $categoryNodePageSearchDataMapperInterface)
-    {
+    public function __construct(
+        CategoryNodePageSearchDataMapperInterface $categoryNodePageSearchDataMapperInterface,
+        protected array $categoryNodePageSearchDataExpanderPlugins
+    ) {
         $this->categoryNodePageSearchDataMapperInterface = $categoryNodePageSearchDataMapperInterface;
     }
 
@@ -46,11 +49,39 @@ class CategoryNodePageSearchMapper implements CategoryNodePageSearchMapperInterf
             $localeName,
         );
 
+        $data = $this->executeCategoryNodePageSearchDataExpanderPlugins($data, $nodeTransfer, $storeName, $localeName);
+
         return $categoryNodePageSearchTransfer
             ->setIdCategoryNode($nodeTransfer->getIdCategoryNode())
             ->setNode($nodeTransfer)
             ->setData($data)
             ->setStore($storeName)
             ->setLocale($localeName);
+    }
+
+    /**
+     * @param array $data
+     * @param \Generated\Shared\Transfer\NodeTransfer $nodeTransfer
+     * @param string $storeName
+     * @param string $localeName
+     *
+     * @return array
+     */
+    protected function executeCategoryNodePageSearchDataExpanderPlugins(
+        array $data,
+        NodeTransfer $nodeTransfer,
+        string $storeName,
+        string $localeName
+    ): array {
+        foreach ($this->categoryNodePageSearchDataExpanderPlugins as $categoryNodePageSearchDataExpanderPlugin) {
+            $data = $categoryNodePageSearchDataExpanderPlugin->expandCategoryNodePageSearchData(
+                $data,
+                $nodeTransfer,
+                $storeName,
+                $localeName,
+            );
+        }
+
+        return $data;
     }
 }

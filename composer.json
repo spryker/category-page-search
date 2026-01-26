@@ -6,6 +6,7 @@
     "require": {
         "php": ">=8.3",
         "spryker/category": "^5.0.0",
+        "spryker/category-page-search-extension": "^1.0.0",
         "spryker/event-behavior": "^1.1.0",
         "spryker/kernel": "^3.30.0",
         "spryker/publisher-extension": "^1.0.0",

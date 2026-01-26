@@ -66,6 +66,7 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->tester->setDependency(QueueDependencyProvider::QUEUE_ADAPTERS, function (Container $container) {
             return [
                 $this->tester->getLocator()->rabbitMq()->client()->createQueueAdapter(),
+                $this->tester->getLocator()->symfonyMessenger()->client()->createQueueAdapter(),
             ];
         });
         $this->tester->addDependencies();
