@@ -38,13 +38,6 @@ class CategoryPageSearchRepository extends AbstractRepository implements Categor
             ->find();
     }
 
-    /**
-     * @param int $offset
-     * @param int $limit
-     * @param string $orderByColumnName
-     *
-     * @return \Generated\Shared\Transfer\FilterTransfer
-     */
     protected function createFilterTransfer(int $offset, int $limit, string $orderByColumnName): FilterTransfer
     {
         return (new FilterTransfer())

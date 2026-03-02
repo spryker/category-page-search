@@ -39,13 +39,6 @@ class CategoryNodePageSearchDataMapper implements CategoryNodePageSearchDataMapp
      */
     protected const KEY_TYPE = 'type';
 
-    /**
-     * @param \Generated\Shared\Transfer\NodeTransfer $nodeTransfer
-     * @param string $storeName
-     * @param string $localeName
-     *
-     * @return array
-     */
     public function mapNodeTransferToCategoryNodePageSearchDataForStoreAndLocale(
         NodeTransfer $nodeTransfer,
         string $storeName,
@@ -69,12 +62,6 @@ class CategoryNodePageSearchDataMapper implements CategoryNodePageSearchDataMapp
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\NodeTransfer $nodeTransfer
-     * @param \Generated\Shared\Transfer\CategoryLocalizedAttributesTransfer|null $categoryLocalizedAttributesTransfer
-     *
-     * @return array
-     */
     protected function getSearchResultData(
         NodeTransfer $nodeTransfer,
         ?CategoryLocalizedAttributesTransfer $categoryLocalizedAttributesTransfer = null
@@ -94,21 +81,11 @@ class CategoryNodePageSearchDataMapper implements CategoryNodePageSearchDataMapp
         return $searchResultData;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryLocalizedAttributesTransfer|null $categoryLocalizedAttributesTransfer
-     *
-     * @return array
-     */
     protected function getFullTextBoostedData(?CategoryLocalizedAttributesTransfer $categoryLocalizedAttributesTransfer): array
     {
         return $categoryLocalizedAttributesTransfer ? [$categoryLocalizedAttributesTransfer->getName()] : [''];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryLocalizedAttributesTransfer|null $categoryLocalizedAttributesTransfer
-     *
-     * @return array
-     */
     protected function getFullTextData(?CategoryLocalizedAttributesTransfer $categoryLocalizedAttributesTransfer): array
     {
         if (!$categoryLocalizedAttributesTransfer) {
@@ -122,21 +99,11 @@ class CategoryNodePageSearchDataMapper implements CategoryNodePageSearchDataMapp
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryLocalizedAttributesTransfer|null $categoryLocalizedAttributesTransfer
-     *
-     * @return array
-     */
     protected function getSuggestionTermsData(?CategoryLocalizedAttributesTransfer $categoryLocalizedAttributesTransfer): array
     {
         return $categoryLocalizedAttributesTransfer ? [$categoryLocalizedAttributesTransfer->getName()] : [''];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryLocalizedAttributesTransfer|null $categoryLocalizedAttributesTransfer
-     *
-     * @return array
-     */
     protected function getCompletionTermsData(?CategoryLocalizedAttributesTransfer $categoryLocalizedAttributesTransfer): array
     {
         return $categoryLocalizedAttributesTransfer ? [$categoryLocalizedAttributesTransfer->getName()] : [''];

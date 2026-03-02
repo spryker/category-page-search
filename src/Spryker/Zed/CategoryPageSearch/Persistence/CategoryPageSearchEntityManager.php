@@ -15,11 +15,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class CategoryPageSearchEntityManager extends AbstractEntityManager implements CategoryPageSearchEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CategoryNodePageSearchTransfer $categoryNodePageSearchTransfer
-     *
-     * @return void
-     */
     public function saveCategoryNodePageSearch(CategoryNodePageSearchTransfer $categoryNodePageSearchTransfer): void
     {
         $categoryNodePageSearchEntity = $this->getFactory()
@@ -55,13 +50,6 @@ class CategoryPageSearchEntityManager extends AbstractEntityManager implements C
         $categoryNodePageSearchCollection->delete();
     }
 
-    /**
-     * @param int $idCategoryNode
-     * @param string $localeName
-     * @param string $storeName
-     *
-     * @return void
-     */
     public function deleteCategoryNodePageSearchByIdCategoryNodeForLocaleAndStore(int $idCategoryNode, string $localeName, string $storeName): void
     {
         /** @var \Propel\Runtime\Collection\ObjectCollection $categoryNodePageSearchCollection */

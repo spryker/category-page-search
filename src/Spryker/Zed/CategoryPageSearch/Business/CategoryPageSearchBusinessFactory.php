@@ -45,9 +45,6 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
  */
 class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\Writer\CategoryNodePageSearchWriterInterface
-     */
     public function createCategoryNodePageSearchWriter(): CategoryNodePageSearchWriterInterface
     {
         return new CategoryNodePageSearchWriter(
@@ -61,9 +58,6 @@ class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\Mapper\CategoryNodePageSearchMapperInterface
-     */
     public function createCategoryNodePageSearchMapper(): CategoryNodePageSearchMapperInterface
     {
         return new CategoryNodePageSearchMapper(
@@ -72,17 +66,11 @@ class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\Search\DataMapper\CategoryNodePageSearchDataMapperInterface
-     */
     public function createCategoryNodePageSearchDataMapper(): CategoryNodePageSearchDataMapperInterface
     {
         return new CategoryNodePageSearchDataMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\Deleter\CategoryNodePageSearchDeleterInterface
-     */
     public function createCategoryNodePageSearchDeleter(): CategoryNodePageSearchDeleterInterface
     {
         return new CategoryNodePageSearchDeleter(
@@ -93,33 +81,21 @@ class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Dependency\Facade\CategoryPageSearchToStoreFacadeInterface
-     */
     public function getStoreFacade(): CategoryPageSearchToStoreFacadeInterface
     {
         return $this->getProvidedDependency(CategoryPageSearchDependencyProvider::FACADE_STORE);
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Dependency\Facade\CategoryPageSearchToCategoryFacadeInterface
-     */
     public function getCategoryFacade(): CategoryPageSearchToCategoryFacadeInterface
     {
         return $this->getProvidedDependency(CategoryPageSearchDependencyProvider::FACADE_CATEGORY);
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Dependency\Facade\CategoryPageSearchToEventBehaviorFacadeInterface
-     */
     public function getEventBehaviorFacade(): CategoryPageSearchToEventBehaviorFacadeInterface
     {
         return $this->getProvidedDependency(CategoryPageSearchDependencyProvider::FACADE_EVENT_BEHAVIOR);
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\Writer\CategoryAttribute\CategoryNodePageSearchByCategoryAttributeEventsWriterInterface
-     */
     public function createCategoryNodePageSearchByCategoryAttributeEventsWriter(): CategoryNodePageSearchByCategoryAttributeEventsWriterInterface
     {
         return new CategoryNodePageSearchByCategoryAttributeEventsWriter(
@@ -128,9 +104,6 @@ class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\Writer\Category\CategoryNodePageSearchByCategoryEventsWriterInterface
-     */
     public function createCategoryNodePageSearchByCategoryEventsWriter(): CategoryNodePageSearchByCategoryEventsWriterInterface
     {
         return new CategoryNodePageSearchByCategoryEventsWriter(
@@ -139,9 +112,6 @@ class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\Writer\CategoryStore\CategoryNodePageSearchByCategoryStoreEventsWriterInterface
-     */
     public function createCategoryNodePageSearchByCategoryStoreEventsWriter(): CategoryNodePageSearchByCategoryStoreEventsWriterInterface
     {
         return new CategoryNodePageSearchByCategoryStoreEventsWriter(
@@ -150,9 +120,6 @@ class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\Writer\CategoryTemplate\CategoryNodePageSearchByCategoryTemplateEventsWriterInterface
-     */
     public function createCategoryNodePageSearchByCategoryTemplateEventsWriter(): CategoryNodePageSearchByCategoryTemplateEventsWriterInterface
     {
         return new CategoryNodePageSearchByCategoryTemplateEventsWriter(
@@ -161,9 +128,6 @@ class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\Deleter\CategoryAttribute\CategoryNodePageSearchByCategoryAttributeEventsDeleterInterface
-     */
     public function createCategoryNodePageSearchByCategoryAttributeEventsDeleter(): CategoryNodePageSearchByCategoryAttributeEventsDeleterInterface
     {
         return new CategoryNodePageSearchByCategoryAttributeEventsDeleter(
@@ -172,9 +136,6 @@ class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\Deleter\Category\CategoryNodePageSearchByCategoryEventsDeleterInterface
-     */
     public function createCategoryNodePageSearchByCategoryEventsDeleter(): CategoryNodePageSearchByCategoryEventsDeleterInterface
     {
         return new CategoryNodePageSearchByCategoryEventsDeleter(
@@ -183,9 +144,6 @@ class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\Deleter\CategoryTemplate\CategoryNodePageSearchByCategoryTemplateEventsDeleterInterface
-     */
     public function createCategoryNodePageSearchByCategoryTemplateEventsDeleter(): CategoryNodePageSearchByCategoryTemplateEventsDeleterInterface
     {
         return new CategoryNodePageSearchByCategoryTemplateEventsDeleter(
@@ -194,9 +152,6 @@ class CategoryPageSearchBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Business\Extractor\CategoryNodeExtractorInterface
-     */
     public function createCategoryNodeExtractor(): CategoryNodeExtractorInterface
     {
         return new CategoryNodeExtractor();

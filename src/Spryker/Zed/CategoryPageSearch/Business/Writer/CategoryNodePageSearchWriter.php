@@ -57,15 +57,6 @@ class CategoryNodePageSearchWriter implements CategoryNodePageSearchWriterInterf
      */
     protected $categoryNodeExtractor;
 
-    /**
-     * @param \Spryker\Zed\CategoryPageSearch\Persistence\CategoryPageSearchEntityManagerInterface $categoryPageSearchEntityManager
-     * @param \Spryker\Zed\CategoryPageSearch\Business\Mapper\CategoryNodePageSearchMapperInterface $categoryNodePageSearchMapper
-     * @param \Spryker\Zed\CategoryPageSearch\Dependency\Facade\CategoryPageSearchToCategoryFacadeInterface $categoryFacade
-     * @param \Spryker\Zed\CategoryPageSearch\Dependency\Facade\CategoryPageSearchToStoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\CategoryPageSearch\Dependency\Facade\CategoryPageSearchToEventBehaviorFacadeInterface $eventBehaviorFacade
-     * @param \Spryker\Zed\CategoryPageSearch\Business\Deleter\CategoryNodePageSearchDeleterInterface $categoryNodePageSearchDeleter
-     * @param \Spryker\Zed\CategoryPageSearch\Business\Extractor\CategoryNodeExtractorInterface $categoryNodeExtractor
-     */
     public function __construct(
         CategoryPageSearchEntityManagerInterface $categoryPageSearchEntityManager,
         CategoryNodePageSearchMapperInterface $categoryNodePageSearchMapper,
@@ -113,11 +104,6 @@ class CategoryNodePageSearchWriter implements CategoryNodePageSearchWriterInterf
         $this->storeData($nodeCollectionTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryNodeCriteriaTransfer $categoryNodeCriteriaTransfer
-     *
-     * @return void
-     */
     public function writeCategoryNodeStorageCollectionByCategoryNodeCriteria(CategoryNodeCriteriaTransfer $categoryNodeCriteriaTransfer): void
     {
         $nodeCollectionTransfer = $this->categoryFacade->getCategoryNodes($categoryNodeCriteriaTransfer);
@@ -126,11 +112,6 @@ class CategoryNodePageSearchWriter implements CategoryNodePageSearchWriterInterf
         $this->writeCategoryNodePageSearchCollection($categoryNodeIds);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\NodeCollectionTransfer $nodeCollectionTransfer
-     *
-     * @return void
-     */
     protected function storeData(NodeCollectionTransfer $nodeCollectionTransfer): void
     {
         $localeNameMapByStoreName = $this->getLocaleNameMapByStoreName();
@@ -141,13 +122,6 @@ class CategoryNodePageSearchWriter implements CategoryNodePageSearchWriterInterf
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\NodeCollectionTransfer $nodeCollectionTransfers
-     * @param string $storeName
-     * @param string $localeName
-     *
-     * @return void
-     */
     protected function storeDataForStoreAndLocale(
         NodeCollectionTransfer $nodeCollectionTransfers,
         string $storeName,
@@ -168,13 +142,6 @@ class CategoryNodePageSearchWriter implements CategoryNodePageSearchWriterInterf
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\NodeTransfer $nodeTransfer
-     * @param string $storeName
-     * @param string $localeName
-     *
-     * @return void
-     */
     protected function storeDataSet(
         NodeTransfer $nodeTransfer,
         string $storeName,
@@ -203,12 +170,6 @@ class CategoryNodePageSearchWriter implements CategoryNodePageSearchWriterInterf
         return $localeNameMapByStoreName;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryTransfer $categoryTransfer
-     * @param string $storeName
-     *
-     * @return bool
-     */
     protected function isCategoryHasStoreRelation(CategoryTransfer $categoryTransfer, string $storeName): bool
     {
         foreach ($categoryTransfer->getStoreRelationOrFail()->getStores() as $storeTransfer) {

@@ -25,10 +25,5 @@ interface CategoryNodePageSearchWriterInterface
      */
     public function writeCategoryNodePageSearchCollectionByCategoryNodeEvents(array $eventEntityTransfers): void;
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryNodeCriteriaTransfer $categoryNodeCriteriaTransfer
-     *
-     * @return void
-     */
     public function writeCategoryNodeStorageCollectionByCategoryNodeCriteria(CategoryNodeCriteriaTransfer $categoryNodeCriteriaTransfer): void;
 }

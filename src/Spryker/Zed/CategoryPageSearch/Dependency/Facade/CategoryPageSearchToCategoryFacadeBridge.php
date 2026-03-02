@@ -25,11 +25,6 @@ class CategoryPageSearchToCategoryFacadeBridge implements CategoryPageSearchToCa
         $this->categoryFacade = $categoryFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryNodeCriteriaTransfer $categoryNodeCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\NodeCollectionTransfer
-     */
     public function getCategoryNodes(CategoryNodeCriteriaTransfer $categoryNodeCriteriaTransfer): NodeCollectionTransfer
     {
         return $this->categoryFacade->getCategoryNodes($categoryNodeCriteriaTransfer);

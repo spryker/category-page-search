@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\CategoryNodePageSearchTransfer;
 
 interface CategoryPageSearchEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CategoryNodePageSearchTransfer $categoryNodePageSearchTransfer
-     *
-     * @return void
-     */
     public function saveCategoryNodePageSearch(CategoryNodePageSearchTransfer $categoryNodePageSearchTransfer): void;
 
     /**
@@ -25,13 +20,6 @@ interface CategoryPageSearchEntityManagerInterface
      */
     public function deleteCategoryNodePageSearchByCategoryNodeIds(array $categoryNodeIds): void;
 
-    /**
-     * @param int $idCategoryNode
-     * @param string $localeName
-     * @param string $storeName
-     *
-     * @return void
-     */
     public function deleteCategoryNodePageSearchByIdCategoryNodeForLocaleAndStore(
         int $idCategoryNode,
         string $localeName,

@@ -35,12 +35,6 @@ class CategoryNodePageSearchDeleter implements CategoryNodePageSearchDeleterInte
      */
     protected $categoryNodeExtractor;
 
-    /**
-     * @param \Spryker\Zed\CategoryPageSearch\Persistence\CategoryPageSearchEntityManagerInterface $categoryPageSearchEntityManager
-     * @param \Spryker\Zed\CategoryPageSearch\Dependency\Facade\CategoryPageSearchToCategoryFacadeInterface $categoryFacade
-     * @param \Spryker\Zed\CategoryPageSearch\Dependency\Facade\CategoryPageSearchToEventBehaviorFacadeInterface $eventBehaviorFacade
-     * @param \Spryker\Zed\CategoryPageSearch\Business\Extractor\CategoryNodeExtractorInterface $categoryNodeExtractor
-     */
     public function __construct(
         CategoryPageSearchEntityManagerInterface $categoryPageSearchEntityManager,
         CategoryPageSearchToCategoryFacadeInterface $categoryFacade,
@@ -75,11 +69,6 @@ class CategoryNodePageSearchDeleter implements CategoryNodePageSearchDeleterInte
         $this->deleteCategoryNodePageSearchCollection($categoryNodeIds);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryNodeCriteriaTransfer $categoryNodeCriteriaTransfer
-     *
-     * @return void
-     */
     public function deleteCategoryNodeStorageCollectionByCategoryNodeCriteria(CategoryNodeCriteriaTransfer $categoryNodeCriteriaTransfer): void
     {
         $nodeCollectionTransfer = $this->categoryFacade->getCategoryNodes($categoryNodeCriteriaTransfer);

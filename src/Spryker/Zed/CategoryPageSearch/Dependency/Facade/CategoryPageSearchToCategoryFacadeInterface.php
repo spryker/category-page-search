@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\NodeCollectionTransfer;
 
 interface CategoryPageSearchToCategoryFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\CategoryNodeCriteriaTransfer $categoryNodeCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\NodeCollectionTransfer
-     */
     public function getCategoryNodes(CategoryNodeCriteriaTransfer $categoryNodeCriteriaTransfer): NodeCollectionTransfer;
 }

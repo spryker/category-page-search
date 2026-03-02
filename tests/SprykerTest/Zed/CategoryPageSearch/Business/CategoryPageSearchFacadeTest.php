@@ -56,9 +56,6 @@ class CategoryPageSearchFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -72,9 +69,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->tester->addDependencies();
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCategoryNodePageSearchCollectionByCategoryStorePublishEventsWriteSearchData(): void
     {
         // Arrange
@@ -88,9 +82,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->executeCategoryNodePageSearchWriterAsserts($categoryTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCategoryNodePageSearchCollectionByCategoryStoreEventsWillWriteSearchData(): void
     {
         // Arrange
@@ -107,9 +98,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->executeCategoryNodePageSearchWriterAsserts($categoryTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCategoryNodePageSearchCollectionByCategoryAttributeEventsWillWriteSearchData(): void
     {
         // Arrange
@@ -125,9 +113,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->executeCategoryNodePageSearchWriterAsserts($categoryTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCategoryNodePageSearchCollectionByCategoryEventsWillWriteSearchData(): void
     {
         // Arrange
@@ -141,9 +126,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->executeCategoryNodePageSearchWriterAsserts($categoryTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCategoryNodePageSearchCollectionByCategoryTemplateEventsWillWriteSearchData(): void
     {
         // Arrange
@@ -163,9 +145,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->executeCategoryNodePageSearchWriterAsserts($categoryTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testWriteCategoryNodePageSearchCollectionByCategoryNodeEventsWillWriteSearchData(): void
     {
         // Arrange
@@ -179,9 +158,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->executeCategoryNodePageSearchWriterAsserts($categoryTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteCategoryNodePageSearchCollectionByCategoryAttributeEventsWillDeleteSearchData(): void
     {
         // Arrange
@@ -199,9 +175,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->executeCategoryNodePageSearchDeleterAsserts($categoryTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteCategoryNodePageSearchCollectionByCategoryEventsWillDeleteSearchData(): void
     {
         // Arrange
@@ -217,9 +190,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->executeCategoryNodePageSearchDeleterAsserts($categoryTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteCategoryNodePageSearchCollectionByCategoryTemplateEventsWillDeleteSearchData(): void
     {
         // Arrange
@@ -240,9 +210,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->executeCategoryNodePageSearchDeleterAsserts($categoryTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteCategoryNodePageSearchCollectionByCategoryNodeEventsWillDeleteSearchData(): void
     {
         // Arrange
@@ -257,9 +224,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->executeCategoryNodePageSearchDeleterAsserts($categoryTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testGetSynchronizationDataTransfersByCategoryNodeIdsWillReturnDataFilteredByIds(): void
     {
         // Arrange
@@ -281,9 +245,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->assertSame([$categoryNodeId], $categoryNodeIds, 'Synchronization data should be filtered by category node IDs.');
     }
 
-    /**
-     * @return void
-     */
     public function testGetSynchronizationDataTransfersByCategoryNodeIdsWillReturnDataByLimit(): void
     {
         $expectedCount = 1;
@@ -299,11 +260,6 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->assertCount($expectedCount, $synchronizationDataTransfers, sprintf('Exactly %d category nodes should be found.', $expectedCount));
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryTransfer $categoryTransfer
-     *
-     * @return void
-     */
     protected function executeCategoryNodePageSearchWriterAsserts(CategoryTransfer $categoryTransfer): void
     {
         $categoryNodePageSearchEntity = $this->tester->findCategoryNodePageSearchEntityByLocalizedCategory($categoryTransfer);
@@ -320,11 +276,6 @@ class CategoryPageSearchFacadeTest extends Unit
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryTransfer $categoryTransfer
-     *
-     * @return void
-     */
     protected function executeCategoryNodePageSearchDeleterAsserts(CategoryTransfer $categoryTransfer): void
     {
         $categoryNodePageSearchEntity = $this->tester->findCategoryNodePageSearchEntityByLocalizedCategory($categoryTransfer);

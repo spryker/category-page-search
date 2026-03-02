@@ -56,9 +56,6 @@ class CategoryPageSearchBusinessTester extends Actor
      */
     protected const LOCALE_NAME_DE = 'de_DE';
 
-    /**
-     * @return void
-     */
     public function addDependencies(): void
     {
         $this->setDependency(ClientStoreDependencyProvider::PLUGINS_STORE_EXPANDER, [
@@ -66,12 +63,6 @@ class CategoryPageSearchBusinessTester extends Actor
         ]);
     }
 
-    /**
-     * @param array $categoryData
-     * @param array $storeData
-     *
-     * @return \Generated\Shared\Transfer\CategoryTransfer
-     */
     public function haveLocalizedCategoryWithStoreRelation(array $categoryData = [], array $storeData = []): CategoryTransfer
     {
         $categoryTransfer = $this->haveLocalizedCategory($categoryData);
@@ -86,22 +77,11 @@ class CategoryPageSearchBusinessTester extends Actor
         return $categoryTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryTransfer $categoryTransfer
-     *
-     * @return \Orm\Zed\CategoryPageSearch\Persistence\SpyCategoryNodePageSearch|null
-     */
     public function findCategoryNodePageSearchEntityByLocalizedCategory(CategoryTransfer $categoryTransfer): ?SpyCategoryNodePageSearch
     {
         return $this->createSpyCategoryQueryByLocalizedCategory($categoryTransfer)->findOne();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryTransfer $categoryTransfer
-     * @param array $searchData
-     *
-     * @return void
-     */
     public function haveCategoryNodePageSearchByLocalizedCategory(
         CategoryTransfer $categoryTransfer,
         array $searchData = []
@@ -119,11 +99,6 @@ class CategoryPageSearchBusinessTester extends Actor
         $spyCategoryNodePageSearchEntity->save();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryTransfer $categoryTransfer
-     *
-     * @return \Orm\Zed\CategoryPageSearch\Persistence\SpyCategoryNodePageSearchQuery
-     */
     protected function createSpyCategoryQueryByLocalizedCategory(CategoryTransfer $categoryTransfer): SpyCategoryNodePageSearchQuery
     {
         $localeName = $categoryTransfer->getLocalizedAttributes()
@@ -136,17 +111,11 @@ class CategoryPageSearchBusinessTester extends Actor
             ->filterByLocale($localeName);
     }
 
-    /**
-     * @return \Spryker\Service\UtilEncoding\UtilEncodingServiceInterface
-     */
     protected function getUtilEncodingService(): UtilEncodingServiceInterface
     {
         return $this->getLocator()->utilEncoding()->service();
     }
 
-    /**
-     * @return \Spryker\Client\StoreExtension\Dependency\Plugin\StoreExpanderPluginInterface
-     */
     protected function createStoreStorageStoreExpanderPluginMock(): StoreExpanderPluginInterface
     {
         $storeTransfer = (new StoreTransfer())

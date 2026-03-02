@@ -18,20 +18,11 @@ class CategoryNodePageSearchMapper
      */
     protected $utilEncodingService;
 
-    /**
-     * @param \Spryker\Zed\CategoryPageSearch\Dependency\Service\CategoryPageSearchToUtilEncodingInterface $utilEncodingService
-     */
     public function __construct(CategoryPageSearchToUtilEncodingInterface $utilEncodingService)
     {
         $this->utilEncodingService = $utilEncodingService;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CategoryNodePageSearchTransfer $categoryNodePageSearchTransfer
-     * @param \Orm\Zed\CategoryPageSearch\Persistence\SpyCategoryNodePageSearch $categoryNodePageSearchEntity
-     *
-     * @return \Orm\Zed\CategoryPageSearch\Persistence\SpyCategoryNodePageSearch
-     */
     public function mapCategoryNodePageSearchTransferToCategoryNodePageSearchEntity(
         CategoryNodePageSearchTransfer $categoryNodePageSearchTransfer,
         SpyCategoryNodePageSearch $categoryNodePageSearchEntity

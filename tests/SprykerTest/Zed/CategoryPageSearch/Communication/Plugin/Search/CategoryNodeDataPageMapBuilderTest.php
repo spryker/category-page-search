@@ -36,9 +36,6 @@ use Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilder;
  */
 class CategoryNodeDataPageMapBuilderTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testBuildPageMapWillReturnCorrectTransfer(): void
     {
         if ($this->isDynamicStoreEnabled()) {
@@ -57,13 +54,6 @@ class CategoryNodeDataPageMapBuilderTest extends Unit
         $this->assertSame('Demoshop', $pageMapTransfer->getFullTextBoosted()[0]);
     }
 
-    /**
-     * @param int $idCategoryNode
-     * @param int $idLocale
-     * @param string $storeName
-     *
-     * @return \Orm\Zed\Category\Persistence\SpyCategoryNode
-     */
     protected function getCategoryNodeTreeByIdCategoryTreeForLocaleAndStore(int $idCategoryNode, int $idLocale, string $storeName): SpyCategoryNode
     {
         return SpyCategoryNodeQuery::create()
@@ -88,9 +78,6 @@ class CategoryNodeDataPageMapBuilderTest extends Unit
             ->getFirst();
     }
 
-    /**
-     * @return bool
-     */
     protected function isDynamicStoreEnabled(): bool
     {
         return (bool)getenv('SPRYKER_DYNAMIC_STORE_MODE');

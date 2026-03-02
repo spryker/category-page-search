@@ -23,10 +23,6 @@ class CategoryNodePageSearchByCategoryEventsDeleter implements CategoryNodePageS
      */
     protected $categoryNodePageSearchDeleter;
 
-    /**
-     * @param \Spryker\Zed\CategoryPageSearch\Dependency\Facade\CategoryPageSearchToEventBehaviorFacadeInterface $eventBehaviorFacade
-     * @param \Spryker\Zed\CategoryPageSearch\Business\Deleter\CategoryNodePageSearchDeleterInterface $categoryNodePageSearchDeleter
-     */
     public function __construct(
         CategoryPageSearchToEventBehaviorFacadeInterface $eventBehaviorFacade,
         CategoryNodePageSearchDeleterInterface $categoryNodePageSearchDeleter

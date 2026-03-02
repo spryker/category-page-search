@@ -24,10 +24,6 @@ class CategoryNodePageSearchByCategoryAttributeEventsWriter implements CategoryN
      */
     protected $categoryNodePageSearchWriter;
 
-    /**
-     * @param \Spryker\Zed\CategoryPageSearch\Dependency\Facade\CategoryPageSearchToEventBehaviorFacadeInterface $eventBehaviorFacade
-     * @param \Spryker\Zed\CategoryPageSearch\Business\Writer\CategoryNodePageSearchWriterInterface $categoryNodePageSearchWriter
-     */
     public function __construct(
         CategoryPageSearchToEventBehaviorFacadeInterface $eventBehaviorFacade,
         CategoryNodePageSearchWriterInterface $categoryNodePageSearchWriter

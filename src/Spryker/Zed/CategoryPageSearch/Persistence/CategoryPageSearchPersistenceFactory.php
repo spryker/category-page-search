@@ -29,9 +29,6 @@ class CategoryPageSearchPersistenceFactory extends AbstractPersistenceFactory
         return SpyCategoryNodePageSearchQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Persistence\Propel\Mapper\CategoryNodePageSearchMapper
-     */
     public function createCategoryNodePageSearchMapper(): CategoryNodePageSearchMapper
     {
         return new CategoryNodePageSearchMapper($this->getUtilEncodingService());
@@ -45,9 +42,6 @@ class CategoryPageSearchPersistenceFactory extends AbstractPersistenceFactory
         return $this->getProvidedDependency(CategoryPageSearchDependencyProvider::QUERY_CONTAINER_CATEGORY);
     }
 
-    /**
-     * @return \Spryker\Zed\CategoryPageSearch\Dependency\Service\CategoryPageSearchToUtilEncodingInterface
-     */
     public function getUtilEncodingService(): CategoryPageSearchToUtilEncodingInterface
     {
         return $this->getProvidedDependency(CategoryPageSearchDependencyProvider::SERVICE_UTIL_ENCODING);

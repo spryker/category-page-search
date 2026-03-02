@@ -11,13 +11,6 @@ use Generated\Shared\Transfer\NodeTransfer;
 
 interface CategoryNodePageSearchDataMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\NodeTransfer $nodeTransfer
-     * @param string $storeName
-     * @param string $localeName
-     *
-     * @return array
-     */
     public function mapNodeTransferToCategoryNodePageSearchDataForStoreAndLocale(
         NodeTransfer $nodeTransfer,
         string $storeName,

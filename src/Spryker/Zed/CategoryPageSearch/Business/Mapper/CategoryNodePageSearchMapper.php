@@ -29,14 +29,6 @@ class CategoryNodePageSearchMapper implements CategoryNodePageSearchMapperInterf
         $this->categoryNodePageSearchDataMapperInterface = $categoryNodePageSearchDataMapperInterface;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\NodeTransfer $nodeTransfer
-     * @param \Generated\Shared\Transfer\CategoryNodePageSearchTransfer $categoryNodePageSearchTransfer
-     * @param string $storeName
-     * @param string $localeName
-     *
-     * @return \Generated\Shared\Transfer\CategoryNodePageSearchTransfer
-     */
     public function mapNodeTransferToCategoryNodePageSearchTransferForStoreAndLocale(
         NodeTransfer $nodeTransfer,
         CategoryNodePageSearchTransfer $categoryNodePageSearchTransfer,
@@ -59,14 +51,6 @@ class CategoryNodePageSearchMapper implements CategoryNodePageSearchMapperInterf
             ->setLocale($localeName);
     }
 
-    /**
-     * @param array $data
-     * @param \Generated\Shared\Transfer\NodeTransfer $nodeTransfer
-     * @param string $storeName
-     * @param string $localeName
-     *
-     * @return array
-     */
     protected function executeCategoryNodePageSearchDataExpanderPlugins(
         array $data,
         NodeTransfer $nodeTransfer,
