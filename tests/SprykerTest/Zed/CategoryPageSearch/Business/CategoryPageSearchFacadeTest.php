@@ -158,6 +158,38 @@ class CategoryPageSearchFacadeTest extends Unit
         $this->executeCategoryNodePageSearchWriterAsserts($categoryTransfer);
     }
 
+    public function testWriteCategoryNodePageSearchCollectionByCategoryEventsWillDeleteStaleSearchDataWhenCategoryIsInactive(): void
+    {
+        // Arrange
+        $categoryTransfer = $this->tester->haveLocalizedCategoryWithStoreRelation();
+        $this->tester->haveCategoryNodePageSearchByLocalizedCategory($categoryTransfer);
+        $this->tester->deactivateCategory($categoryTransfer->getIdCategoryOrFail());
+
+        $eventEntityTransfer = (new EventEntityTransfer())->setId($categoryTransfer->getIdCategory());
+
+        // Act
+        $this->tester->getFacade()->writeCategoryNodePageSearchCollectionByCategoryEvents([$eventEntityTransfer]);
+
+        // Assert
+        $this->executeCategoryNodePageSearchDeleterAsserts($categoryTransfer);
+    }
+
+    public function testWriteCategoryNodePageSearchCollectionByCategoryNodeEventsWillDeleteStaleSearchDataWhenCategoryIsInactive(): void
+    {
+        // Arrange
+        $categoryTransfer = $this->tester->haveLocalizedCategoryWithStoreRelation();
+        $this->tester->haveCategoryNodePageSearchByLocalizedCategory($categoryTransfer);
+        $this->tester->deactivateCategory($categoryTransfer->getIdCategoryOrFail());
+
+        $eventEntityTransfer = (new EventEntityTransfer())->setId($categoryTransfer->getCategoryNode()->getIdCategoryNode());
+
+        // Act
+        $this->tester->getFacade()->writeCategoryNodePageSearchCollectionByCategoryNodeEvents([$eventEntityTransfer]);
+
+        // Assert
+        $this->executeCategoryNodePageSearchDeleterAsserts($categoryTransfer);
+    }
+
     public function testDeleteCategoryNodePageSearchCollectionByCategoryAttributeEventsWillDeleteSearchData(): void
     {
         // Arrange

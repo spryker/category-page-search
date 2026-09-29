@@ -101,6 +101,7 @@ class CategoryNodePageSearchWriter implements CategoryNodePageSearchWriterInterf
 
         $nodeCollectionTransfer = $this->categoryFacade->getCategoryNodes($categoryNodeCriteriaTransfer);
 
+        $this->deleteInactiveCategoryNodePageSearchCollection($categoryNodeIds, $nodeCollectionTransfer);
         $this->storeData($nodeCollectionTransfer);
     }
 
@@ -110,6 +111,25 @@ class CategoryNodePageSearchWriter implements CategoryNodePageSearchWriterInterf
         $categoryNodeIds = $this->categoryNodeExtractor->extractCategoryNodeIdsFromNodeCollection($nodeCollectionTransfer);
 
         $this->writeCategoryNodePageSearchCollection($categoryNodeIds);
+    }
+
+    /**
+     * @param array<int> $categoryNodeIds
+     *
+     * @return void
+     */
+    protected function deleteInactiveCategoryNodePageSearchCollection(
+        array $categoryNodeIds,
+        NodeCollectionTransfer $nodeCollectionTransfer
+    ): void {
+        $activeCategoryNodeIds = $this->categoryNodeExtractor->extractCategoryNodeIdsFromNodeCollection($nodeCollectionTransfer);
+        $inactiveCategoryNodeIds = array_diff($categoryNodeIds, $activeCategoryNodeIds);
+
+        if ($inactiveCategoryNodeIds === []) {
+            return;
+        }
+
+        $this->categoryNodePageSearchDeleter->deleteCategoryNodePageSearchCollection($inactiveCategoryNodeIds);
     }
 
     protected function storeData(NodeCollectionTransfer $nodeCollectionTransfer): void

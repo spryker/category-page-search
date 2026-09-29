@@ -11,6 +11,7 @@ use Codeception\Actor;
 use Codeception\Stub;
 use Generated\Shared\Transfer\CategoryTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
+use Orm\Zed\Category\Persistence\SpyCategoryQuery;
 use Orm\Zed\CategoryPageSearch\Persistence\SpyCategoryNodePageSearch;
 use Orm\Zed\CategoryPageSearch\Persistence\SpyCategoryNodePageSearchQuery;
 use Spryker\Client\Store\StoreDependencyProvider as ClientStoreDependencyProvider;
@@ -75,6 +76,15 @@ class CategoryPageSearchBusinessTester extends Actor
         $this->haveCategoryStoreRelation($categoryTransfer->getIdCategory(), $storeTransfer->getIdStore());
 
         return $categoryTransfer;
+    }
+
+    public function deactivateCategory(int $idCategory): void
+    {
+        SpyCategoryQuery::create()
+            ->filterByIdCategory($idCategory)
+            ->findOne()
+            ->setIsActive(false)
+            ->save();
     }
 
     public function findCategoryNodePageSearchEntityByLocalizedCategory(CategoryTransfer $categoryTransfer): ?SpyCategoryNodePageSearch
