@@ -7,9 +7,9 @@
 
 namespace Spryker\Shared\CategoryPageSearch;
 
-use Spryker\Shared\Kernel\AbstractBundleConfig;
+use Spryker\Shared\Kernel\AbstractSharedConfig;
 
-class CategoryPageSearchConfig extends AbstractBundleConfig
+class CategoryPageSearchConfig extends AbstractSharedConfig
 {
     /**
      * Specification:
